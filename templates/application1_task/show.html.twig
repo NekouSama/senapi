@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Application1Task{% endblock %}
+
+{% block body %}
+    <h1>Application1Task</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ application1_task.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ application1_task.name }}</td>
+            </tr>
+            <tr>
+                <th>StartedAt</th>
+                <td>{{ application1_task.startedAt ? application1_task.startedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>FinishedAt</th>
+                <td>{{ application1_task.finishedAt ? application1_task.finishedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('application1_task_index') }}">back to list</a>
+
+    <a href="{{ path('application1_task_edit', {'id': application1_task.id}) }}">edit</a>
+
+    {{ include('application1_task/_delete_form.html.twig') }}
+{% endblock %}

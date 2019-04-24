@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for objectif in objectifs %}
+        <h3>{{objectif.title}}</h3>
+        {% for task in objectif.tasks %}
+            <div>
+                <input type="checkbox" id="{{task.id}}">
+                <label for="{{task.id}}">{{ task.name }}</label>
+            </div>
+        {% endfor %}
+    {% endfor %}
+{% endblock %}

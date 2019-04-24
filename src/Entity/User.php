@@ -45,9 +45,27 @@ class User implements UserInterface
      */
     private $developerTechnologicalMonitoringClicked;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Application1Task", mappedBy="user")
+     */
+    private $application1Tasks;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Application1Objectif", mappedBy="user")
+     */
+    private $application1Objectifs;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Application1Date", mappedBy="user")
+     */
+    private $application1Dates;
+
     public function __construct()
     {
         $this->developerTechnologicalMonitoringClicked = new ArrayCollection();
+        $this->application1Tasks = new ArrayCollection();
+        $this->application1Objectifs = new ArrayCollection();
+        $this->application1Dates = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -156,6 +174,99 @@ class User implements UserInterface
     {
         if ($this->developerTechnologicalMonitoringClicked->contains($developerTechnologicalMonitoringClicked)) {
             $this->developerTechnologicalMonitoringClicked->removeElement($developerTechnologicalMonitoringClicked);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Application1Task[]
+     */
+    public function getApplication1Tasks(): Collection
+    {
+        return $this->application1Tasks;
+    }
+
+    public function addApplication1Task(Application1Task $application1Task): self
+    {
+        if (!$this->application1Tasks->contains($application1Task)) {
+            $this->application1Tasks[] = $application1Task;
+            $application1Task->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeApplication1Task(Application1Task $application1Task): self
+    {
+        if ($this->application1Tasks->contains($application1Task)) {
+            $this->application1Tasks->removeElement($application1Task);
+            // set the owning side to null (unless already changed)
+            if ($application1Task->getUser() === $this) {
+                $application1Task->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Application1Objectif[]
+     */
+    public function getApplication1Objectifs(): Collection
+    {
+        return $this->application1Objectifs;
+    }
+
+    public function addApplication1Objectif(Application1Objectif $application1Objectif): self
+    {
+        if (!$this->application1Objectifs->contains($application1Objectif)) {
+            $this->application1Objectifs[] = $application1Objectif;
+            $application1Objectif->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeApplication1Objectif(Application1Objectif $application1Objectif): self
+    {
+        if ($this->application1Objectifs->contains($application1Objectif)) {
+            $this->application1Objectifs->removeElement($application1Objectif);
+            // set the owning side to null (unless already changed)
+            if ($application1Objectif->getUser() === $this) {
+                $application1Objectif->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Application1Date[]
+     */
+    public function getApplication1Dates(): Collection
+    {
+        return $this->application1Dates;
+    }
+
+    public function addApplication1Date(Application1Date $application1Date): self
+    {
+        if (!$this->application1Dates->contains($application1Date)) {
+            $this->application1Dates[] = $application1Date;
+            $application1Date->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeApplication1Date(Application1Date $application1Date): self
+    {
+        if ($this->application1Dates->contains($application1Date)) {
+            $this->application1Dates->removeElement($application1Date);
+            // set the owning side to null (unless already changed)
+            if ($application1Date->getUser() === $this) {
+                $application1Date->setUser(null);
+            }
         }
 
         return $this;

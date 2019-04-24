@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Application1Objectif{% endblock %}
+
+{% block body %}
+    <h1>Application1Objectif</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ application1_objectif.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ application1_objectif.title }}</td>
+            </tr>
+            <tr>
+                <th>StartedAt</th>
+                <td>{{ application1_objectif.startedAt ? application1_objectif.startedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>FinishedAt</th>
+                <td>{{ application1_objectif.finishedAt ? application1_objectif.finishedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Benchmark</th>
+                <td>{{ application1_objectif.benchmark }}</td>
+            </tr>
+            <tr>
+                <th>SuccessRate</th>
+                <td>{{ application1_objectif.successRate }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('application1_objectif_index') }}">back to list</a>
+
+    <a href="{{ path('application1_objectif_edit', {'id': application1_objectif.id}) }}">edit</a>
+
+    {{ include('application1_objectif/_delete_form.html.twig') }}
+{% endblock %}

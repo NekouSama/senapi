@@ -3,24 +3,23 @@
 
 {% block body %}
     {% for ligne in list %}
-    <style>
-    .card:hover {
-        background-color:rgb(220,220,220);
-    }
-    </style>
-    <a href="{{ligne.link}}" style="text-decoration:none;">
-        <div class="card">
-        <div class="row"> 
-        <div class="card-body col-1">
-            <img src="/assets/img/sf4-logo.png" class="img-fluid"/>
-        </div>
-        <div class="card-body col-11">
-            <h5 class="card-title">{{ligne.title}}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{ligne.createdAt | date('d/m/y h:i')}}</h6>
-
-        </div>
-        </div>
-        </div>
+        <style>
+        .card:hover {
+            background-color:rgb(220,220,220);
+        }
+        </style>
+        <a href="{{ligne.link}}" style="text-decoration:none;">
+            <div class="card">
+                <div class="row"> 
+                    <div class="card-body col-1">
+                        <img src="/assets/img/sf4-logo.png" class="img-fluid"/>
+                    </div>
+                    <div class="card-body col-11">
+                        <h5 class="card-title">{{ligne.title}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ligne.createdAt | date('d/m/y h:i')}}</h6>
+                    </div>
+                </div>
+            </div>
         </a>
     {% endfor %}
 {% endblock %}

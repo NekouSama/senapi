@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Application1Objectif index{% endblock %}
+
+{% block body %}
+    <h1>Application1Objectif index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>StartedAt</th>
+                <th>FinishedAt</th>
+                <th>Benchmark</th>
+                <th>SuccessRate</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for application1_objectif in application1_objectifs %}
+            <tr>
+                <td>{{ application1_objectif.id }}</td>
+                <td>{{ application1_objectif.title }}</td>
+                <td>{{ application1_objectif.startedAt ? application1_objectif.startedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ application1_objectif.finishedAt ? application1_objectif.finishedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ application1_objectif.benchmark }}</td>
+                <td>{{ application1_objectif.successRate }}</td>
+                <td>
+                    <a href="{{ path('application1_objectif_show', {'id': application1_objectif.id}) }}">show</a>
+                    <a href="{{ path('application1_objectif_edit', {'id': application1_objectif.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('application1_objectif_new') }}">Create new</a>
+{% endblock %}
