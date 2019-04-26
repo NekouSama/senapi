@@ -1,26 +1,48 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <style>
+        .card:hover {
+            background-color:rgb(220,220,220);
+        }
+
+    </style>
+{% endblock %}
 
 {% block body %}
+<script>
+function jeClique(val){
+    showIframe();
+    const iframe = document.getElementById("ifr");
+    iframe.src = val;
+    $('#exampleModalLong').modal('show');
+}
+</script>
     {% for ligne in list %}
-    <style>
-    .card:hover {
-        background-color:rgb(220,220,220);
-    }
-    </style>
-    <a href="{{ligne.link}}" style="text-decoration:none;">
-        <div class="card">
-        <div class="row"> 
-        <div class="card-body col-1">
-            <img src="/assets/img/sf4-logo.png" class="img-fluid"/>
-        </div>
-        <div class="card-body col-11">
-            <h5 class="card-title">{{ligne.title}}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{ligne.createdAt | date('d/m/y h:i')}}</h6>
+    <div class="row">
+        <div class="col-2">
+            <input type="checkbox" class="" name="" id=""
+            style="height:100%">
 
         </div>
+        <div class="col-10">
+            <a onClick="jeClique('{{ligne.link}}')"  style="text-decoration:none;">
+                <div class="card">
+                    <div class="row"> 
+
+
+                        <div class="card-body col-1">
+                            <img src="/assets/img/sf4-logo.png" class="img-fluid"/>
+                        </div>
+                        <div class="card-body col-11">
+                            <h5 class="card-title">{{ligne.title}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ligne.createdAt | date('d/m/y h:i')}}</h6>
+                        </div>
+                    </div>
+                </div>
+            </a>
         </div>
-        </div>
-        </a>
+    </div>
+        
     {% endfor %}
 {% endblock %}

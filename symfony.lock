@@ -192,6 +192,9 @@
     "symfony/contracts": {
         "version": "v1.0.2"
     },
+    "symfony/css-selector": {
+        "version": "v4.2.7"
+    },
     "symfony/debug": {
         "version": "v4.2.5"
     },
@@ -199,6 +202,9 @@
         "version": "v4.2.5"
     },
     "symfony/doctrine-bridge": {
+        "version": "v4.2.7"
+    },
+    "symfony/dom-crawler": {
         "version": "v4.2.7"
     },
     "symfony/dotenv": {
